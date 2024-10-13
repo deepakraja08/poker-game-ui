@@ -45,5 +45,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.2.0"
-  }
+  },
+  "homepage": "http://deepakraja08.github.io/poker-game-ui"
 }
