@@ -10,6 +10,16 @@ const GameInitialize = () => {
   const [initialAmount, setInitialAmount] = useState(500);
   const [showDetails, setShowDetails] = useState(false);
 
+  const resetPage = () => {
+    setPlayers([
+        { name: "deepak", status: "added" },
+        { name: "amit", status: "added" },
+        { name: "kiran", status: "added" },
+      ])
+      setInitialAmount(500);
+      setShowDetails(false);
+  }
+
   // Handle change for player name input
   const handlePlayerChange = (index: any, event: any) => {
     const updatedPlayers = [...players];
@@ -106,6 +116,7 @@ const GameInitialize = () => {
           .map((p) => p.name.toUpperCase()),
         initialAmount,
       }}
+      resetPage={resetPage}
     />
   );
 };

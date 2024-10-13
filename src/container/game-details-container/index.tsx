@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 
 type GameDetailsProps = {
   details: any;
+  resetPage: any;
 };
 
 const sumAmounts = (data: any[]) => {
@@ -69,7 +70,7 @@ const simplifyDebts = (
   return transactions;
 };
 
-const GameDetails = ({ details }: GameDetailsProps) => {
+const GameDetails = ({ details, resetPage }: GameDetailsProps) => {
   const { players, initialAmount } = details;
   const playerAmounts = players.reduce((acc: any, player: any) => {
     acc[player] = initialAmount;
@@ -83,6 +84,17 @@ const GameDetails = ({ details }: GameDetailsProps) => {
   const [remainingAmounts, setRemainingAmounts] = useState<any>({});
   const [ratio1, setRatio1] = useState<number>(1);
   const [ratio2, setRatio2] = useState<number>(1);
+
+  const resetDetails = () => {
+    setInitialAmounts(playerAmounts);
+    setFinalAmounts({});
+    setTransactions([]);
+    setShowResults(false);
+    setWinners([]);
+    setRemainingAmounts({});
+    setRatio1(1);
+    setRatio2(1);
+  };
 
   // Calculate remaining amounts
   const calculateRemainingAmounts = () => {
@@ -327,6 +339,25 @@ const GameDetails = ({ details }: GameDetailsProps) => {
           )}
         </div>
       )}
+      <br />
+      <div
+        style={{
+          display: "flex",
+          flexFlow: "column wrap",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <button
+          style={{ width: "250px" }}
+          onClick={() => {
+            resetDetails();
+            resetPage();
+          }}
+        >
+          Reset Game
+        </button>
+      </div>
     </div>
   );
 };
