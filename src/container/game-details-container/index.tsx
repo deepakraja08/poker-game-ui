@@ -116,7 +116,7 @@ const GameDetails = ({ details, resetPage }: GameDetailsProps) => {
     const finalArray: any[] = Array.from(Object.values(finalAmounts));
 
     let indices: any = [];
-    let maxProfit = -Infinity; // Initialize to the smallest possible value
+    let maxProfit = -9999999999; // Initialize to the smallest possible value
 
     // Calculate profits for each player
     const profits = finalArray.map((final: any, i) => final - initialArray[i]);
